@@ -314,6 +314,12 @@ func (rl *RotateLogs) rotateNolock(filename string) error {
 		return err
 	}
 
+	sort.Slice(matches, func(i, j int) bool {
+		fi, _ := os.Stat(matches[i])
+		fj, _ := os.Stat(matches[j])
+		return fi.ModTime().Before(fj.ModTime())
+	})
+
 	cutoff := rl.clock.Now().Add(-1 * rl.maxAge)
 
 	// the linter tells me to pre allocate this...
