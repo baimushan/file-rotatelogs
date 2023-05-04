@@ -10,11 +10,12 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/lestrrat-go/file-rotatelogs/internal/fileutil"
+	"github.com/baimushan/file-rotatelogs/internal/fileutil"
 	strftime "github.com/lestrrat-go/strftime"
 	"github.com/pkg/errors"
 )
